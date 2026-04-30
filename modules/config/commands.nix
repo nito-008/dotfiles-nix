@@ -44,5 +44,6 @@
     cmatrix # Matrix-style falling characters animation
     cowsay # Mow
     bastet # Tetris clone for the terminal
+    lolcat # wao
   ];
 }
