@@ -2,7 +2,7 @@
 {
   # ── WireGuard VPN ─────────────────────────────────────────────────────────────
   # Fast, modern peer-to-peer VPN built into the Linux kernel. Imported
-  # conditionally by modules/app.nix when enableWireGuard = true in flake.nix.
+  # conditionally by modules/appS.nix when enableWireGuard = true in flake.nix.
   #
   # Set wireGuardVPNConfigFilePath in flake.nix to the path of your .conf file.
   #

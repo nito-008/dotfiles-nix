@@ -2,7 +2,7 @@
 {
   # ── Tailscale ─────────────────────────────────────────────────────────────────
   # Zero-config mesh VPN that connects devices across networks without port
-  # forwarding. Imported conditionally by modules/app.nix when enableTailscale = true
+  # forwarding. Imported conditionally by modules/apps.nix when enableTailscale = true
   # in flake.nix.
   #
   # After first enable, run: sudo tailscale up

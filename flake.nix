@@ -42,7 +42,7 @@
 
       # NixOS application and tool modules (packages, shell, fonts, i18n, etc.)
       nixosModules = [
-        ./modules/app.nix
+        ./modules/apps.nix
       ];
 
       # Nixpkgs instance with allowUnfree — shared by both NixOS and home-manager
