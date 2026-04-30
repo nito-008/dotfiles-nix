@@ -30,10 +30,6 @@
       # ── Optional services ──────────────────────────────────────────────────────
       # After changing, run `nixos` to apply.
       enableTailscale = true; # Zero-config mesh VPN (run `sudo tailscale up` after first enable)
-      enableWireGuard = true; # WireGuard VPN — also set wireGuardVPNConfigFilePath below
-      # Path to the WireGuard .conf file (private keys — never commit this file).
-      # Only read when enableWireGuard = true.
-      wireGuardVPNConfigFilePath = "/home/hello/Documents/Myxogastria0808-NixOS.conf";
 
       # NixOS base system configuration (boot, hardware, networking, services)
       baseModules = [
@@ -80,10 +76,9 @@
             inherit githubUsername;
             inherit githubEmail;
             inherit enableTailscale;
-            inherit enableWireGuard;
-            inherit wireGuardVPNConfigFilePath;
           };
         };
       };
     };
 }
+

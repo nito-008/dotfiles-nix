@@ -3,7 +3,6 @@
   pkgs,
   lib,
   enableTailscale,
-  enableWireGuard,
   ...
 }:
 {
@@ -20,8 +19,7 @@
   ]
   # Optional service modules — toggled via booleans in flake.nix.
   # When false, the module is not imported at all (no packages, no firewall rules).
-  ++ lib.optionals enableTailscale [ ./config/tailscale.nix ]
-  ++ lib.optionals enableWireGuard [ ./config/wireguard.nix ];
+  ++ lib.optionals enableTailscale [ ./config/tailscale.nix ];
   environment.systemPackages = with pkgs; [
     # TLS/SSL toolkit and certificate management
     openssl
@@ -53,3 +51,4 @@
     direnv # Shell environment loader
   ];
 }
+
