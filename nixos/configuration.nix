@@ -17,33 +17,34 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Clear /tmp on every boot for a clean state
+  boot.tmp.cleanOnBoot = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  nix = {
+    settings = {
+      auto-optimise-store = true; # Deduplicate identical files in the Nix store
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
+  networking.hostName = "nixos"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
+  networking.resolvconf.extraConfig = "name_servers=1.1.1.1";
+  networking.firewall.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "ja_JP.UTF-8";
-    LC_IDENTIFICATION = "ja_JP.UTF-8";
-    LC_MEASUREMENT = "ja_JP.UTF-8";
-    LC_MONETARY = "ja_JP.UTF-8";
-    LC_NAME = "ja_JP.UTF-8";
-    LC_NUMERIC = "ja_JP.UTF-8";
-    LC_PAPER = "ja_JP.UTF-8";
-    LC_TELEPHONE = "ja_JP.UTF-8";
-    LC_TIME = "ja_JP.UTF-8";
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -56,14 +57,21 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = "/run/current-system/sw/bin/zsh";
   users.users.nito = {
     isNormalUser = true;
     description = "nito";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "flatpak"
+    ];
     packages = with pkgs; [];
+    shell = "/run/current-system/sw/bin/zsh";
   };
 
-  networking.resolvconf.extraConfig = "name_servers=1.1.1.1";
+  services.flatpak.enable = true;
+  services.openssh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

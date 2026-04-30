@@ -14,17 +14,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { label = "nixos";
+    { 
       fsType = "ext4";
+      label = "nixos";
     };
 
   fileSystems."/boot" =
-    { label = "boot";
+    { 
       fsType = "vfat";
+      label = "boot";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      label = "swap";
+    }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
