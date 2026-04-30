@@ -64,13 +64,11 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "flatpak"
     ];
     packages = with pkgs; [];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
-  services.flatpak.enable = true;
   services.openssh.enable = true;
 
   # Allow unfree packages
