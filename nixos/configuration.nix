@@ -35,7 +35,7 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ibanez"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -44,12 +44,6 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "jp";
-    variant = "";
-  };
 
   console = {
     keyMap = "jp106";
