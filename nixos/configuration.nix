@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -39,7 +39,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  services.resolved.enable = true;
   networking.resolvconf.extraConfig = "name_servers=1.1.1.1";
   networking.firewall.enable = true;
 
@@ -65,7 +64,7 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
     shell = "/run/current-system/sw/bin/zsh";
   };
 
@@ -74,8 +73,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -106,3 +105,4 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
+
