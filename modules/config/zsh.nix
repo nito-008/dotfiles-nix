@@ -2,6 +2,7 @@
 {
   programs.zsh = {
     enable = true;
+    promptInit = "";
     enableCompletion = true; # Load NixOS-provided zsh completions (nix-zsh-completions)
     autosuggestions.enable = true; # Suggest previous commands as you type
     syntaxHighlighting.enable = true; # Highlight valid/invalid commands in real time
