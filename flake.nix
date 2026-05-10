@@ -64,9 +64,9 @@
       };
 
       # ── NixOS ─────────────────────────────────────────────────────────────────
-      # Replace "nixos" with your hostname if different from the default
+      # Keep this attribute name in sync with networking.hostName.
       nixosConfigurations = {
-        nixos = inputs.nixpkgs.lib.nixosSystem {
+        ibanez = inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs;
           # Merge base config, app modules, and nixvim from the external flake
           modules = baseModules ++ nixosModules;
