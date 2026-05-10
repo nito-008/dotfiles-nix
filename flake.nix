@@ -21,7 +21,7 @@
     inputs:
     let
       systems = "x86_64-linux"; # Target architecture
-      username = "nito"; # Your Linux username (home directory will be /home/hello)
+      username = "nito"; # Your Linux username (home directory will be /home/[username])
 
       # GitHub info
       githubUsername = "nito-008";
@@ -81,4 +81,3 @@
       };
     };
 }
-

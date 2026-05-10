@@ -41,8 +41,9 @@
     # Typst - modern typesetting system (alternative to LaTeX)
     typst
 
-    # HTTP clients
+    # Network and media CLIs
     httpie # User-friendly HTTP client for the terminal
+    yt-dlp # Video/audio downloader for supported media sites
 
     distrobox # Run any Linux distro inside a container
 
@@ -51,4 +52,3 @@
     direnv # Shell environment loader
   ];
 }
-
