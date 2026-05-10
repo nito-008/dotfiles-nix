@@ -5,6 +5,12 @@
   enableTailscale,
   ...
 }:
+let
+  stablePkgs = import inputs.nixpkgs_25_11 {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
   imports = [
     ./config/commands.nix # General CLI utilities and system tools
@@ -43,7 +49,7 @@
 
     # Network and media CLIs
     httpie # User-friendly HTTP client for the terminal
-    yt-dlp # Video/audio downloader for supported media sites
+    stablePkgs.yt-dlp # Video/audio downloader for supported media sites
 
     distrobox # Run any Linux distro inside a container
 
