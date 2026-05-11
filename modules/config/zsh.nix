@@ -202,7 +202,7 @@
       "..." = "cd ../../";
       "...." = "cd ../../../";
       # Modern CLI replacements
-      "clauded" = "claude --dangerously-skip-permissions"; # Claude Code Yolo Mode 
+      "clauded" = "claude --dangerously-skip-permissions"; # Claude Code Yolo Mode
       "codexd" = "codex --dangerously-bypass-approvals-and-sandbox"; # Codex Yolo Mode
       "ls" = "eza"; # eza: colorized ls with icons
       "ll" = "eza -l"; # Long listing format
