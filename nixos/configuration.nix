@@ -57,6 +57,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     packages = with pkgs; [ ];
     shell = "/run/current-system/sw/bin/zsh";
