@@ -2,16 +2,16 @@
   # Ref: https://gist.github.com/mIcHyAmRaNe/a6ee5ca3311d61ae6f181e691643925d
   #
   # Prompt layout (two-line):
-  #   Line 1: ┌──(username❄ hostname)-[directory] OS git_branch git_status ... modules
-  #   Line 2: └─λ
+  #   Line 1: ┌──(username❄ hostname)-[󰉋 directory] git_branch git_status ... modules time
+  #   Line 2: └─󰛓
   programs.starship = {
     enable = true;
     settings = {
       "$schema" = "https://starship.rs/config-schema.json";
       scan_timeout = 100; # ms (default: 30)
       format = ''
-        [┌──''\\(](bold green)''$username❄ ''$hostname[''\\)-''\\[](bold green)''$directory[''\\]](bold green) ''$os ''$git_branch''$git_status''$aws''$azure''$buf''$bun''$c''$cmake''$cobol''$conda''$container''$crystal''$daml''$dart''$deno''$docker_context''$dotnet''$elixir''$elm''$erlang''$fennel''$fossil_branch''$fossil_metrics''$gcloud''$gleam''$go''$guix_shell''$gradle''$haskell''$haxe''$helm''$java''$julia''$kotlin''$kubernetes''$lua''$meson''$hg_branch''$nats''$nim''$nix_shell''$nodejs''$ocaml''$odin''$opa''$openstack''$perl''$php''$pijul_channel''$pulumi''$purescript''$python''$quarto''$rlang''$raku''$red''$ruby''$rust''$scala''$shell''$shlvl''$singularity''$solidity''$spack''$swift''$terraform''$typst''$vagrant''$vlang''$vcsh''$zig''$cmd_duration
-        [└─](bold green)[λ ](bold blue)
+        [┌──''\\(](bold green)''$username❄ ''$hostname[''\\)-''\\[](bold green)[󰉋 ](bold blue)''$directory[''\\]](bold green) ''$git_branch''$git_status''$aws''$azure''$buf''$bun''$c''$cmake''$cobol''$conda''$container''$crystal''$daml''$dart''$deno''$docker_context''$dotnet''$elixir''$elm''$erlang''$fennel''$fossil_branch''$fossil_metrics''$gcloud''$gleam''$go''$guix_shell''$gradle''$haskell''$haxe''$helm''$java''$julia''$kotlin''$kubernetes''$lua''$meson''$hg_branch''$nats''$nim''$nix_shell''$nodejs''$ocaml''$odin''$opa''$openstack''$perl''$php''$pijul_channel''$pulumi''$purescript''$python''$quarto''$rlang''$raku''$red''$ruby''$rust''$scala''$shell''$shlvl''$singularity''$solidity''$spack''$swift''$terraform''$typst''$vagrant''$vlang''$vcsh''$zig''$time
+        [└─](bold green)[󰛓 ](bold blue)
       '';
       username = {
         style_root = "bold red";
@@ -44,9 +44,10 @@
         disabled = false;
       };
       continuation_prompt = "[...](bold blue)";
-      cmd_duration = {
-        min_time = 1000; # Show duration only for commands taking longer than 1 second
-        format = "  [$duration]($style)";
+      time = {
+        disabled = false;
+        format = " [$time]($style)";
+        time_format = "%H:%M";
         style = "bold yellow";
       };
       git_branch = {
@@ -59,57 +60,6 @@
         conflicted = "!";
         modified = "~";
         staged = "✓";
-      };
-      # OS icon shown in the prompt (Nerd Font glyph per distro)
-      os = {
-        format = "[$symbol]($style)";
-        style = "bold green";
-        disabled = false;
-        symbols = {
-          Alpaquita = " ";
-          Alpine = " ";
-          AlmaLinux = " ";
-          Amazon = " ";
-          Android = " ";
-          Arch = " ";
-          Artix = " ";
-          CentOS = " ";
-          Debian = " ";
-          DragonFly = " ";
-          Emscripten = " ";
-          EndeavourOS = " ";
-          Fedora = " ";
-          FreeBSD = " ";
-          Garuda = "󰛓 ";
-          Gentoo = " ";
-          HardenedBSD = "󰞌 ";
-          Illumos = "󰈸 ";
-          Kali = " ";
-          Linux = " ";
-          Mabox = " ";
-          Macos = " ";
-          Manjaro = " ";
-          Mariner = " ";
-          MidnightBSD = " ";
-          Mint = " ";
-          NetBSD = " ";
-          NixOS = " ";
-          OpenBSD = "󰈺 ";
-          openSUSE = " ";
-          OracleLinux = "󰌷 ";
-          Pop = " ";
-          Raspbian = " ";
-          Redhat = " ";
-          RedHatEnterprise = " ";
-          RockyLinux = " ";
-          Redox = "󰀘 ";
-          Solus = "󰠳 ";
-          SUSE = " ";
-          Ubuntu = " ";
-          Void = " ";
-          Windows = "󰍲 ";
-          Unknown = " ";
-        };
       };
       # Language/tool symbols (Nerd Font glyphs shown when inside a relevant project directory)
       package.symbol = "󰏗 ";
