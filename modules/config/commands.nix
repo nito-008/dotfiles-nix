@@ -32,6 +32,8 @@
     unrar
     # Terminal PDF viewer
     tdf
+    # Terminal File Manager
+    yazi
     # Character encoding and newline code converter (useful for Japanese text files)
     nkf
     # Nix fetcher helper - generates fetchFromGitHub hashes and revs
@@ -47,3 +49,4 @@
     lolcat # wao
   ];
 }
+
