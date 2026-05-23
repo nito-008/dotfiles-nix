@@ -13,21 +13,23 @@
       enable = true;
       plugins = [ ];
     };
-    # Shell initialization script - runs on every new shell session
     shellInit = ''
-      # Print a welcome message with the distro name using cowsay and lolcat
-      DISTRO=`sed -n -e /^NAME=/p /etc/os-release | cut -c 6-`
-      EXCLAMATION="!!!"
-      cowsay "Welcome to " ''$DISTRO''$EXCLAMATION | lolcat
-
       # Hook direnv into zsh for auto-loading .envrc files on directory change
       eval "$(direnv hook zsh)"
 
       # Set Oh My Zsh custom directory (for custom themes and plugins)
-      ZSH_CUSTOM=$HOME/.config/oh-my-zsh
+      export ZSH_CUSTOM=$HOME/.config/oh-my-zsh
 
       # Style for zsh-autosuggestions (dim grey, Solarized base01)
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#586e75"
+    '';
+    # Interactive shell initialization. Keep SSH command output clean for tools
+    # like Zed Remote Development that parse stdout during startup.
+    interactiveShellInit = ''
+      # Print a welcome message with the distro name using cowsay and lolcat
+      DISTRO=$(sed -n -e /^NAME=/p /etc/os-release | cut -c 6-)
+      EXCLAMATION="!!!"
+      cowsay "Welcome to " ''$DISTRO''$EXCLAMATION | lolcat
 
       # Alt+E to edit the current command line in the default editor (usually $EDITOR)
       bindkey '^[e' edit-command-line
