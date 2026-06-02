@@ -30,7 +30,9 @@
     unzip
     rar
     unrar
-    # Terminal PDF viewer
+    # PDF utilities
+    poppler-utils # Includes pdftotext for extracting text from PDFs
+    tesseract # OCR tool
     tdf
     # Terminal File Manager
     yazi
@@ -49,4 +51,3 @@
     lolcat # wao
   ];
 }
-
