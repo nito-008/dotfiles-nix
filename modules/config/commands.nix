@@ -34,6 +34,8 @@
     poppler-utils # Includes pdftotext for extracting text from PDFs
     tesseract # OCR tool
     tdf
+    # Video, Image utility
+    ffmpeg
     # Terminal File Manager
     yazi
     # Character encoding and newline code converter (useful for Japanese text files)
