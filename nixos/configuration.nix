@@ -63,7 +63,7 @@
     shell = "/run/current-system/sw/bin/zsh";
   };
 
-  # Enable hardware accelerated graphics drivers for xpra
+  # Enable hardware accelerated graphics drivers for Servo: https://servo.org
   hardware.graphics.enable = true;
 
   # List packages installed in system profile. To search, run:
