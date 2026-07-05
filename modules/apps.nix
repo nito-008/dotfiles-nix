@@ -56,5 +56,8 @@ in
     # direnv integration - auto-load .envrc when entering a directory
     nix-direnv # Nix-specific direnv extension with faster evaluations
     direnv # Shell environment loader
+
+    # virtual x11 display
+    xpra
   ];
 }
