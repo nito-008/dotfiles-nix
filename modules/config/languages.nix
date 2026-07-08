@@ -14,5 +14,6 @@
     # Nix Formatter, Language Server
     nixfmt
     nixd
+    nil
   ];
 }
