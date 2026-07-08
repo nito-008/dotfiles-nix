@@ -11,7 +11,8 @@
     nodejs
     # Python 3 interpreter
     python3
-    # Nix Formatter
+    # Nix Formatter, Language Server
     nixfmt
+    nixd
   ];
 }
