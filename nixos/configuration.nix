@@ -20,6 +20,11 @@
   # Clear /tmp on every boot for a clean state
   boot.tmp.cleanOnBoot = true;
 
+  # Compatibility for scripts with hardcoded /bin/bash shebangs.
+  systemd.tmpfiles.rules = [
+    "L+ /bin/bash - - - - /run/current-system/sw/bin/bash"
+  ];
+
   nix = {
     settings = {
       auto-optimise-store = true; # Deduplicate identical files in the Nix store
