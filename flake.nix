@@ -12,13 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # NixVim configuration from a separate external flake
-    # Ref: https://github.com/Myxogastria0808/nix-flakes-nixvim
-    nixvimConfig = {
-      url = "github:Myxogastria0808/nix-flakes-nixvim/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Terminal multiplexer for AI coding agents
     herdr = {
       url = "github:ogulcancelik/herdr";
@@ -77,7 +70,7 @@
       nixosConfigurations = {
         ibanez = inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          # Merge base config, app modules, and nixvim from the external flake
+          # Merge base config and app modules.
           modules = baseModules ++ nixosModules;
           specialArgs = {
             inherit inputs;
