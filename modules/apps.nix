@@ -34,6 +34,9 @@ in
     codex
     claude-code
 
+    # Agent multiplexer
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.herdr
+
     # Build automation
     gnumake
 

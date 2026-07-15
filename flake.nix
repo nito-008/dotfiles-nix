@@ -18,6 +18,12 @@
       url = "github:Myxogastria0808/nix-flakes-nixvim/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Terminal multiplexer for AI coding agents
+    herdr = {
+      url = "github:ogulcancelik/herdr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
