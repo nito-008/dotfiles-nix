@@ -1,4 +1,4 @@
-{ greeterCachePath, ... }:
+{ ... }:
 {
   programs.zsh = {
     enable = true;
