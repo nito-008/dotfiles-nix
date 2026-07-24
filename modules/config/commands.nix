@@ -17,6 +17,8 @@
     bottom
     # Modern ls replacement with colors, icons, and Git integration
     eza
+    # Fast and user-friendly alternative to find
+    fd
     # Syntax-highlighted file viewer - modern replacement for cat
     bat
     # Side-by-side diff viewer with syntax highlighting - modern replacement for diff
@@ -45,6 +47,14 @@
     nurl
     # Prefetch dependencies from npm
     prefetch-npm-deps
+    # Internet connection speed test CLI
+    ookla-speedtest
+    # Terminal clock
+    tty-clock
+    # CPU monitoring and stress test TUI
+    s-tui
+    # Terminal audio spectrum visualizer
+    cava
     # Fun / joke commands
     sl # Animated ASCII steam locomotive (anti-typo for `ls`)
     cmatrix # Matrix-style falling characters animation

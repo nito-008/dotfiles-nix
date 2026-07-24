@@ -221,8 +221,6 @@
       # Tools
       "t" = "typst watch"; # Live-compile a Typst document on save
       "net" = "speedtest"; # Ookla network speed test
-      "cf-net" = "firefox https://speed.cloudflare.com/"; # Cloudflare browser speed test
-      "mobile" = "scrcpy -d"; # Mirror and control an Android device over USB
       "clock" = "tty-clock -c -s"; # Centered terminal clock with seconds
       "g" = "lazygit"; # Terminal UI for Git
       "d" = "sudo lazydocker"; # Terminal UI for Docker (requires root for the Docker socket)
@@ -231,7 +229,6 @@
       "tetris" = "bastet"; # Play Tetris in the terminal
       "cpu" = "s-tui"; # CPU stress test and monitoring TUI
       "music" = "cava"; # Terminal audio spectrum visualizer
-      "dbus" = "bustle &!"; # D-Bus message monitor (background)
     };
   };
 }
