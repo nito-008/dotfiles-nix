@@ -12,6 +12,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # NixVim configuration from a separate external flake
+    # Ref: https://github.com/Myxogastria0808/nix-flakes-nixvim
+    nixvimConfig = {
+      url = "github:Myxogastria0808/nix-flakes-nixvim/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Terminal multiplexer for AI coding agents
     herdr = {
       url = "github:ogulcancelik/herdr";

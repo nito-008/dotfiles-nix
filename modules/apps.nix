@@ -45,6 +45,7 @@ in
     appimage-run
 
     # Text editors
+    inputs.nixvimConfig.packages.${pkgs.stdenv.hostPlatform.system}.default # Custom NixVim configuration
     nano # Minimal terminal editor
 
     # Typst - modern typesetting system (alternative to LaTeX)
