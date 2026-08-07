@@ -13,10 +13,9 @@
     };
 
     # NixVim configuration from a separate external flake
-    # Ref: https://github.com/Myxogastria0808/nix-flakes-nixvim
+    # Ref: https://github.com/nito-008/nix-flakes-nixvim
     nixvimConfig = {
-      url = "github:Myxogastria0808/nix-flakes-nixvim/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nito-008/nix-flakes-nixvim";
     };
 
     # Terminal multiplexer for AI coding agents
@@ -90,3 +89,4 @@
       };
     };
 }
+
