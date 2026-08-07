@@ -1,7 +1,7 @@
 {
   inputs = {
-    # Package collection - nixpkgs master for latest packages
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    # Package collection - nixpkgs unstable for latest packages
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Stable package collection for tools that should stay on cached release builds
     nixpkgs_25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
