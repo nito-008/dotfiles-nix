@@ -37,7 +37,7 @@
 
       # ── Optional services ──────────────────────────────────────────────────────
       # After changing, run `nixos` to apply.
-      enableTailscale = true; # Zero-config mesh VPN (run `sudo tailscale up` after first enable)
+      enableTailscale = false; # Zero-config mesh VPN (run `sudo tailscale up` after first enable)
 
       # NixOS base system configuration (boot, hardware, networking, services)
       baseModules = [
@@ -89,4 +89,3 @@
       };
     };
 }
-
