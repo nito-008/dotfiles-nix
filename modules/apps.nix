@@ -15,6 +15,7 @@
     ./config/docker.nix # Docker runtime and CLI tools (docker-compose, lazydocker)
     ./config/languages.nix # Programming language compilers and runtimes
     ./config/nix-ld.nix # Dynamic linker compatibility for pre-built binaries
+    ./config/xpra.nix # Persistent virtual X11 display for GUI development
     ./config/starship.nix # Starship cross-shell prompt
     ./config/zsh.nix # Zsh shell with Oh My Zsh, aliases, and custom functions
   ]
