@@ -34,6 +34,14 @@
       # Alt+E to edit the current command line in the default editor (usually $EDITOR)
       bindkey '^[e' edit-command-line
 
+      # servo: execute Servo development build
+      # Ref: https://servo.org/
+      servo() {
+          echo "xpra: http://localhost:14500"
+          ./mach build || return
+          DISPLAY=:100 "$PWD/mach" run "$@"
+      }
+
       # nl: nurl wrapper to retrieve sha256 hash and revision for fetchFromGitHub
       # Ref: https://chitoku.jp/programming/bash-getopts-long-options/
       nl() {
