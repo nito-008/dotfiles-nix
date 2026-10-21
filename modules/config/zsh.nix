@@ -14,6 +14,10 @@
       plugins = [ ];
     };
     shellInit = ''
+      export NPM_CONFIG_PREFIX="$HOME/.local"
+      typeset -U path
+      path=("$HOME/.local/bin" $path)
+
       # Hook direnv into zsh for auto-loading .envrc files on directory change
       eval "$(direnv hook zsh)"
 

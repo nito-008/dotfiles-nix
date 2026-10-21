@@ -26,12 +26,9 @@
     # TLS/SSL toolkit and certificate management
     openssl
 
-    # AI assistant CLIs
-    codex
+    # Codex and Herdr stay outside Nix because their updaters cannot modify /nix/store.
+    # AI assistant CLI
     claude-code
-
-    # Agent multiplexer
-    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.herdr
 
     # Build automation
     gnumake

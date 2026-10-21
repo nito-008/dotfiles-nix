@@ -1,12 +1,4 @@
 {
-  # Herdr binary cache
-  nixConfig = {
-    extra-substituters = [ "https://herdr.cachix.org" ];
-    extra-trusted-public-keys = [
-      "herdr.cachix.org-1:3nH7IStRsS0ASfdonA0DCRR2ZrSCeWitZ7Kwew0cR4I="
-    ];
-  };
-
   inputs = {
     # Package collection - nixpkgs unstable for latest packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -21,12 +13,6 @@
     # Ref: https://github.com/nito-008/nix-flakes-nixvim
     nixvimConfig = {
       url = "github:nito-008/nix-flakes-nixvim";
-    };
-
-    # Terminal multiplexer for AI coding agents
-    herdr = {
-      url = "github:herdrdev/herdr-nix";
-      # Keep upstream nixpkgs to match the derivations published to Cachix.
     };
   };
 
