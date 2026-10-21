@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -39,7 +39,7 @@
       servo() {
           echo "xpra: http://localhost:14500"
           ./mach build || return
-          DISPLAY=:100 "$PWD/mach" run "$@"
+          DISPLAY=:100 ${pkgs.virtualgl}/bin/vglrun -d egl "$PWD/mach" run "$@"
       }
 
       # nl: nurl wrapper to retrieve sha256 hash and revision for fetchFromGitHub
