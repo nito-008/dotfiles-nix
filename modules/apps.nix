@@ -26,9 +26,8 @@
     # TLS/SSL toolkit and certificate management
     openssl
 
-    # Codex and Herdr stay outside Nix because their updaters cannot modify /nix/store.
-    # AI assistant CLI
-    claude-code
+    # Claude Code, Codex, and Herdr stay outside Nix because their updaters
+    # cannot modify /nix/store.
 
     # Build automation
     gnumake
