@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 
 {
   imports = [
@@ -46,8 +51,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # Shared user settings (shell, wheel/docker groups) are in hosts/common.nix.
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";
-  users.users.nito = {
-    description = "nito";
+  users.users.${username} = {
+    description = username;
     extraGroups = [ "networkmanager" ];
   };
 
