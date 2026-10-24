@@ -8,6 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/config/corosync.nix # Corosync qnetd quorum service for Proxmox
   ];
 
   # Bootloader.
@@ -25,19 +26,10 @@
     "L+ /bin/bash - - - - /run/current-system/sw/bin/bash"
   ];
 
-  nix = {
-    settings = {
-      auto-optimise-store = true; # Deduplicate identical files in the Nix store
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   networking.hostName = "ibanez"; # Define your hostname.
@@ -47,25 +39,16 @@
   networking.resolvconf.extraConfig = "name_servers=1.1.1.1";
   networking.firewall.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
-
   console = {
     keyMap = "jp106";
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Shared user settings (shell, wheel/docker groups) are in hosts/common.nix.
   users.defaultUserShell = "/run/current-system/sw/bin/zsh";
   users.users.nito = {
-    isNormalUser = true;
     description = "nito";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-    ];
-    packages = with pkgs; [ ];
-    shell = "/run/current-system/sw/bin/zsh";
+    extraGroups = [ "networkmanager" ];
   };
 
   # Enable hardware accelerated graphics drivers for Servo: https://servo.org

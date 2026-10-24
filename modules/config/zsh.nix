@@ -227,7 +227,7 @@
       # Nix / NixOS
       # Ref: https://discourse.nixos.org/t/using-nix-develop-opens-bash-instead-of-zsh/25075
       "nix-develop" = "nix develop -c $SHELL"; # Open nix devShell in the current shell (zsh)
-      "hm" = "cd /etc/nixos && nix run home-manager -- switch --flake .#myHomeConfig"; # Apply home-manager config
+      "hm" = "sudo nixos-rebuild switch"; # home-manager is applied as part of the NixOS config
       "nixos" = "sudo nixos-rebuild switch"; # Apply NixOS system config
       "gc" = "nix-collect-garbage --delete-old"; # Free disk space by deleting old Nix generations
       # Tools

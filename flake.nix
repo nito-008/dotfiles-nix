@@ -1,5 +1,10 @@
 {
   inputs = {
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Package collection - nixpkgs unstable for latest packages
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -30,53 +35,50 @@
       # After changing, run `nixos` to apply.
       enableTailscale = false; # Zero-config mesh VPN (run `sudo tailscale up` after first enable)
 
-      # NixOS base system configuration (boot, hardware, networking, services)
-      baseModules = [
-        ./nixos/configuration.nix
-      ];
-
-      # NixOS application and tool modules (packages, shell, fonts, i18n, etc.)
-      nixosModules = [
-        ./modules/apps.nix
-      ];
-
       # Nixpkgs instance with allowUnfree — shared by both NixOS and home-manager
       pkgs = import inputs.nixpkgs {
         system = systems;
         config.allowUnfree = true;
       };
-    in
-    {
-      # ── home-manager ──────────────────────────────────────────────────────────
-      # User-level configuration, intentionally independent from NixOS
-      homeConfigurations = {
-        myHomeConfig = inputs.home-manager.lib.homeManagerConfiguration {
+
+      # Build a NixOS host: shared modules + home-manager + the host's own modules.
+      #   hosts/common.nix   — settings shared by every host (nix, timezone, user)
+      #   modules/apps.nix   — application and tool modules (packages, shell, fonts, i18n, etc.)
+      #   home/home.nix      — user-level config, applied as part of the NixOS switch
+      mkHost =
+        hostModules:
+        inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit username;
+          specialArgs = {
+            inherit inputs username githubUsername githubEmail enableTailscale;
           };
           modules = [
-            ./home/home.nix
-          ];
+            ./hosts/common.nix
+            ./modules/apps.nix
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs username; };
+              home-manager.users.${username} = import ./home/home.nix;
+            }
+          ]
+          ++ hostModules;
         };
-      };
-
+    in
+    {
       # ── NixOS ─────────────────────────────────────────────────────────────────
-      # Keep this attribute name in sync with networking.hostName.
+      # Keep each attribute name in sync with that host's networking.hostName;
+      # `nixos-rebuild switch --flake <repo>` picks the one matching the hostname.
       nixosConfigurations = {
-        ibanez = inputs.nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          # Merge base config and app modules.
-          modules = baseModules ++ nixosModules;
-          specialArgs = {
-            inherit inputs;
-            inherit username;
-            inherit githubUsername;
-            inherit githubEmail;
-            inherit enableTailscale;
-          };
-        };
+        # Bare-metal server
+        ibanez = mkHost [ ./hosts/ibanez ];
+
+        # NixOS-WSL
+        nixos = mkHost [
+          inputs.nixos-wsl.nixosModules.default
+          ./hosts/wsl
+        ];
       };
     };
 }
