@@ -9,6 +9,29 @@
       # Required by air (R language formatter) which ships as a pre-built binary
       libgcc
       glibc
+
+      # Required by Chromium downloaded by Playwright (`npx playwright install chromium`)
+      alsa-lib
+      at-spi2-core
+      cairo
+      cups
+      dbus
+      expat
+      glib
+      gtk3
+      libdrm
+      libgbm
+      libxkbcommon
+      nspr
+      nss
+      pango
+      libx11
+      libxcb
+      libxcomposite
+      libxdamage
+      libxext
+      libxfixes
+      libxrandr
     ];
   };
 }
