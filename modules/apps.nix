@@ -8,6 +8,7 @@
 {
   imports = [
     ./config/commands.nix # General CLI utilities and system tools
+    ./config/cosense.nix # Cosense (Scrapbox) CLI
     ./config/fonts.nix # Font packages and fontconfig defaults
     ./config/git.nix # Git, GitHub CLI, and repository management tools
     ./config/i18n.nix # Locale, fcitx5 input method, and SKK dictionaries
