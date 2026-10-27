@@ -28,6 +28,7 @@
 
     # Claude Code, Codex, and Herdr stay outside Nix because their updaters
     # cannot modify /nix/store.
+    bubblewrap
 
     # Build automation
     gnumake
